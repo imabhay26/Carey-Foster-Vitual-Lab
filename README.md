@@ -1,2 +1,5 @@
 # Carey-Foster-Vitual-Lab
-https://github.com/imabhay26/Carey-Foster-Vitual-Lab/blob/[branch]/Screenshot (561)?raw=true
+<p align="center">
+  <img src="Screenshot(561).png" width="350" title="hover text">
+  
+</p>

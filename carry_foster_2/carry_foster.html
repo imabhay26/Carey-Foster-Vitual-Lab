@@ -31,7 +31,8 @@
             border-bottom: 30px solid grey;
             border-left: 30px solid #979797;
             border-right: 30px solid #979797;
-            margin:10px 100px 0 100px;
+            margin:10px 60px 0 60px;
+            height: 720px;
         }
         #btn_main{
             cursor: pointer;
@@ -71,7 +72,7 @@
     </script>
 </head>
 <body onload="init();">
-<div id="saz" style="margin-left: ">
+<div id="saz" >
     <h1 style="text-align: center;background-color: grey;padding: 2px 0 15px 0;
     margin-top:-10px;color: white">
         CAREY FOSTER'S BRIDGE SIMULATION</h1>
@@ -80,6 +81,35 @@
        style="width: 130px;height: 50px;margin: -10px 0  0 370px;border-radius: 20px;padding: 0 130px 0 15px;border:
        none;background-color: #ca2222;color: white;font-size: 14px;font-weight: bold;outline: none"
        id="btn_main" onclick="main()">
+    <div>
+        <table style="border: none;width: 650px;margin: 0 0 -30px 100px">
+            <tr>
+                <td style="border: none"><h3>Choose Load Resistence X(In Ohms)</h3></td>
+                <td style="border: none">
+                    <select id="resist">
+                        <option>0.1</option>
+                        <option>0.2</option>
+                        <option>0.3</option>
+                        <option>0.4</option>
+                        <option>0.5</option>
+                    </select>
+                </td>
+                <td style="border: none">
+                    <input type="button" onclick="choose_resist()" value="Choose">
+
+                </td>
+                <td style="border: none">
+                    <h3>&nbsp;</span></h3>
+                </td>
+                <td style="border: none">
+                    <h3>Selected value is &nbsp;<span id="rest" style="color: red"></span></h3>
+                </td>
+            </tr>
+
+        </table>
+
+
+    </div>
 
 <div>
     <div>
@@ -98,22 +128,66 @@
 <canvas id="mycanvas" style="border: 5px solid darkblue ;border-radius: 15px;
  margin: 30px 0 0 30px" width="800" height="440"></canvas>
 
-    <div style="margin:-430px 0 10px 900px;padding: 0 0 100px 0">
-        <button id="btn1" class="design"  onclick="main1() " disabled >Resistance_1</button>
-        <button id="btn7" class="design"  onclick="main7()" disabled>Resistance_2</button>
-        <button id="btn8" class="design"  onclick="main8()" disabled>Resistance_3</button>
-        <button id="btn9" class="design"  onclick="main9()" disabled >Resistance_4</button>
-        <button id="btn10" class="design"  onclick="main10()" disabled>Galvanometer</button>
-        <button  id="btn2" class="design" onclick="main2()" disabled>Battery</button>
-        <button id="btn3" class="design" onclick="main3()" disabled>Select Key</button>
+    <div style="margin:-410px 30px 10px 860px;padding: 10px 0 10px 10px;border: 4px solid red;border-radius: 10px">
+
+        <input type="button" class="design" id="btn1" onclick="main1()" style="background-color: #ed5e36;
+        padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Resist_1" >
+
+        <input type="button" class="design" id="btn7" onclick="main7()" style="background-color: #ed5e36;
+        padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Resist_2" >
+
+        <input type="button" class="design" id="btn8" onclick="main8()" style="background-color: #ed5e36;
+        padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Resist_3" >
+
+        <input type="button" class="design" id="btn9" onclick="main9()" style="background-color: #ed5e36;
+        padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Resist_4" >
+
+        <input type="button" class="design" id="btn10" onclick="main10()" style="background-color: #ed5e36;
+        padding: 8px 44px 8px 43px;color: white;margin: 5px 0 0 5px" value=" Galvanometer" ><br>
+
+        <input type="button" class="design" id="btn2" onclick="main2()" style="background-color: #ed5e36;
+        padding: 8px 12px 8px 12px;color: white;margin: 5px 0 0 5px" value=" Battery" >
+
+        <input type="button" class="design" id="btn3" onclick="main3()" style="background-color: #ed5e36;
+        padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Select Key" >
+
+        <input type="button" class="design" id="btn5" onclick="main5()" style="background-color: #ed5e36;
+        padding: 12px 17px 8px 18px;color: white;margin: 5px 0 0 5px" value=" Connect Key & Battery" >
+
+        <input type="button" class="design" id="btn11" onclick="main11()" style="background-color: #ed5e36;
+        padding: 8px 55px 8px 55px;color: white;margin: 5px 0 0 5px" value=" Close Key" >
+
+
+
+        <!--<button id="btn1" class="design"  onclick="main1() " disabled >Resistance_1</button>-->
+        <!--<button id="btn7" class="design"  onclick="main7()" disabled>Resistance_2</button>-->
+        <!--<button id="btn8" class="design"  onclick="main8()" disabled>Resistance_3</button>-->
+        <!--<button id="btn9" class="design"  onclick="main9()" disabled >Resistance_4</button>-->
+        <!--<button id="btn10" class="design"  onclick="main10()" disabled>Galvanometer</button>-->
+        <!--<button  id="btn2" class="design" onclick="main2()" disabled>Battery</button>-->
+        <!--<button id="btn3" class="design" onclick="main3()" disabled>Select Key</button>-->
         <!--<button id="btn4" class="design" onclick="main4()" disabled>Switch_On Key</button>-->
-        <button id="btn5" class="design" onclick="main5()" disabled>Connect Key & Battery</button>
-        <button id="btn11" class="design" onclick="main11()" disabled>Close Key</button>
+        <!--<button id="btn5" class="design" onclick="main5()" disabled>Connect Key & Battery</button>-->
+        <!--<button id="btn11" class="design" onclick="main11()" disabled>Close Key</button>-->
 
         <input type="button" class="design" id="btnl" onclick="main3l()" style="background-color: #ed5e36;
-        padding: 8px 12px 8px 12px;color: white" value=" Shift Left" disabled>
+        padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Shift Left" >
         <input type="button" class="design" id="btnr" onclick="main3r()" style="background-color: #ed5e36;
-        padding: 8px;color: white" value=" Shift Right" disabled>
+        padding: 8px;color: white" value=" Shift Right" >
+
+        <input type="button" class="design" id="btnle" onclick="main3le()" style="background-color: #ed5e36;display: none;
+        padding: 8px;color: white" value=" Shift Left " >
+        <input type="button" class="design" id="btnre" onclick="main3re()" style="background-color: #ed5e36;display: none;
+        padding: 8px;color: white" value=" Shift Right " >
+
+        <input type="button" class="design" id="btne" onclick="main3e()" style="background-color: #ed5e36;
+        padding: 8px 28px 8px 28px;color: white" value=" Exchange X with Y " >
+        <input type="button" class="design" id="btnx" onclick="main3x()" style="background-color: #ed5e36;display: none;
+        padding: 8px 30px 8px 30px;color: white" value=" Exchange Y with X " >
+
+
+
+
     </div>
     <img src="img/resistance2.png" style="display: none" id="img1">
     <img src="img/battery2.jpg" style="display: none" id="img2">
@@ -121,29 +195,29 @@
     <!--<img src="img/key_on.png" style="display: none" id="img4">-->
     <img src="img/keyon.png" style="display: none" id="img11">
     <img src="img/gal.png" style="display: none" id="img5">
+    <img src="img/galr.png" style="display: none" id="img6">
 
 
-    <table style="width: 600px;border: none;margin: -50px 0 0 120px">
-        <tr>
-            <td style="border: none">
-                <h3>Length(l1) in left gap</h3>
-            </td>
-            <td style="border: none">
-                <span id="showl" style="border: 1px solid black;padding: 5px 30px 5px 30px"></span>
-            </td>
 
+    <table style="width: 700px;border: none;margin: 80px 0 0 70px">
+        <tr  id="l1">
             <td style="border: none">
-                <h3>Length(l2) in right gap</h3>
+                <h3>Length(l1,measured from left side when Load resistence X placed in left) </h3>
             </td>
             <td style="border: none">
-                <span id="showr" style="border: 1px solid black;padding: 5px 30px 5px 30px"></span>
+                <h3 id="showl" style="border: 1px solid black;padding: 5px 30px 5px 30px;color: red"></h3>
+            </td>
+        </tr>
+        <tr style="display: none" id="l2">
+            <td style="border: none">
+                <h3>Length(l2,measured from left side when Load resistence X placed in right) </h3>
+            </td>
+            <td style="border: none">
+                <h3 id="showr" style="border: 1px solid black;padding: 5px 30px 5px 30px;color: red"></h3>
             </td>
         </tr>
 
     </table>
-
-
-
 
 </div>
 </div>
@@ -421,6 +495,13 @@
 
 <script>
 
+    function choose_resist(){
+        var r1 = document.getElementById("resist");
+        var str1 = r1.options[r1.selectedIndex].text;
+        document.getElementById('rest').innerHTML=str1 + '  ohm';
+
+    }
+
     function values() {
 
         var e1 = document.getElementById("ddlViewBy1");
@@ -432,6 +513,7 @@
         document.getElementById('radius').innerHTML=strUser2;
 
     }
+
     function specific() {
         var e1 = document.getElementById("ddlViewBy1");
         var strUser1 = e1.options[e1.selectedIndex].text;

@@ -50,12 +50,13 @@
             });
             //dialog.style.padding='100px';
         }
-        function fun1() {
+
+        function funn() {
             alert('Wrong Answer! Choose again...');
         }
 
         function fun2() {
-            alert('Right answer!');
+            alert('Right answer! Now select the value of Load Resistance X');
             setColor.style.backgroundColor='#4CAF50';
             setColor.style.color='white';
             setColor.style.fontSize='bold';
@@ -77,13 +78,19 @@
     margin-top:-10px;color: white">
         CAREY FOSTER'S BRIDGE SIMULATION</h1>
 
-    <input type="button" value="ENABLE POWER"
-       style="width: 130px;height: 50px;margin: -10px 0  0 370px;border-radius: 20px;padding: 0 130px 0 15px;border:
-       none;background-color: #ca2222;color: white;font-size: 14px;font-weight: bold;outline: none"
-       id="btn_main" onclick="main()">
+    <!--<input type="button" value="ENABLE POWER"-->
+       <!--style="width: 130px;height: 50px;margin: 0px 0  0 70px;border-radius: 20px;padding: 0 130px 0 15px;border:-->
+       <!--none;background-color: #ca2222;color: white;font-size: 14px;font-weight: bold;outline: none"-->
+       <!--id="btn_main" onclick="main()">-->
     <div>
-        <table style="border: none;width: 650px;margin: 0 0 -30px 100px">
+        <table style="border: none;width: 620px;margin: 0 0 -10px 200px">
             <tr>
+                <td style="border: none">
+                    <input type="button" value="ENABLE POWER"
+                           style="width: 130px;height: 50px;margin: 0px 0  0 -160px;border-radius: 20px;padding: 0 130px 0 15px;border:
+                           none;background-color: #ca2222;color: white;font-size: 14px;font-weight: bold;outline: none"
+                           id="btn_main" onclick="main()">
+                </td>
                 <td style="border: none"><h3>Choose Load Resistence X(In Ohms)</h3></td>
                 <td style="border: none">
                     <select id="resist">
@@ -95,7 +102,8 @@
                     </select>
                 </td>
                 <td style="border: none">
-                    <input type="button" onclick="choose_resist()" value="Choose">
+                    <input type="button" onclick="choose_resist()" style="background-color: #ed5e36;
+                    padding: 8px 12px 8px 12px;border-radius: 10px;border: none;color: white;margin: 0 0 0 5px" value="Choose">
 
                 </td>
                 <td style="border: none">
@@ -118,7 +126,7 @@
             <p >Among the following which Circuit is correct ?</p>
             <img src="img/cir.png" width="500" height="300"  >
             <p>Options:</p>
-            <input style="margin-left:15px;background-color: lightblue;font-weight:bold;height:22px;font-size:10px;border: none" type="button" value="Image1" id="ans1" onclick="fun1()">
+            <input style="margin-left:15px;background-color: lightblue;font-weight:bold;height:22px;font-size:10px;border: none" type="button" value="Image1" id="ans1" onclick="funn()">
             <input style="background-color: lightblue;font-weight:bold;font-size:10px;height:22px;border: none" type="button" value="Image2" id="ans2" onclick="fun2()">
             <input style="background-color: lightblue;font-weight:bold;font-size:10px;height:22px;border: none" type="button" value="Image3" id="ans3" onclick="fun3()">
             <input  style="background-color: lightblue;font-weight:bold;font-size:10px;height:22px;border: none"  type="button" value="Image4" id="ans4" onclick="fun4()">
@@ -128,7 +136,7 @@
 <canvas id="mycanvas" style="border: 5px solid darkblue ;border-radius: 15px;
  margin: 30px 0 0 30px" width="800" height="440"></canvas>
 
-    <div style="margin:-410px 30px 10px 860px;padding: 10px 0 10px 10px;border: 4px solid red;border-radius: 10px">
+    <div style="margin:-410px 30px 10px 900px;padding: 20px 0px 20px 12px;border: 4px solid red;border-radius: 10px">
 
         <input type="button" class="design" id="btn1" onclick="main1()" style="background-color: #ed5e36;
         padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Resist_1" >
@@ -137,10 +145,10 @@
         padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Resist_2" >
 
         <input type="button" class="design" id="btn8" onclick="main8()" style="background-color: #ed5e36;
-        padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Resist_3" >
+        padding: 8px 12px 8px 12px;color: white;margin: 5px 0 0 5px" value=" Resist_3" >
 
         <input type="button" class="design" id="btn9" onclick="main9()" style="background-color: #ed5e36;
-        padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Resist_4" >
+        padding: 8px 12px 8px 12px;color: white;margin: 1px 0 0 5px" value=" Resist_4" >
 
         <input type="button" class="design" id="btn10" onclick="main10()" style="background-color: #ed5e36;
         padding: 8px 44px 8px 43px;color: white;margin: 5px 0 0 5px" value=" Galvanometer" ><br>
@@ -172,16 +180,19 @@
 
         <input type="button" class="design" id="btnl" onclick="main3l()" style="background-color: #ed5e36;
         padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Shift Left" >
+
         <input type="button" class="design" id="btnr" onclick="main3r()" style="background-color: #ed5e36;
         padding: 8px;color: white" value=" Shift Right" >
 
         <input type="button" class="design" id="btnle" onclick="main3le()" style="background-color: #ed5e36;display: none;
         padding: 8px;color: white" value=" Shift Left " >
+
         <input type="button" class="design" id="btnre" onclick="main3re()" style="background-color: #ed5e36;display: none;
         padding: 8px;color: white" value=" Shift Right " >
 
         <input type="button" class="design" id="btne" onclick="main3e()" style="background-color: #ed5e36;
         padding: 8px 28px 8px 28px;color: white" value=" Exchange X with Y " >
+
         <input type="button" class="design" id="btnx" onclick="main3x()" style="background-color: #ed5e36;display: none;
         padding: 8px 30px 8px 30px;color: white" value=" Exchange Y with X " >
 
@@ -199,7 +210,7 @@
 
 
 
-    <table style="width: 700px;border: none;margin: 80px 0 0 70px">
+    <table style="width: 700px;border: none;margin: 60px 0 0 70px">
         <tr  id="l1">
             <td style="border: none">
                 <h3>Length(l1,measured from left side when Load resistence X placed in left) </h3>

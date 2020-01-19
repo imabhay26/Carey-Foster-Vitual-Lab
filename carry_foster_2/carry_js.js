@@ -18,13 +18,6 @@ function main() {
     //document.getElementById('btn11').disabled=false;
     //document.getElementById('btnl').disabled=false;
     //document.getElementById('btnr').disabled=false;
-
-
-}
-
-function fun1() {
-    // alert('Your answer is right.Now make the circuit connections');
-
 }
 
 /*----------------------------------------------------*/
@@ -49,6 +42,42 @@ context.fillText("E", 80, 420);
 context.font = "23px Arial";
 context.fillText("F", 710, 420);
 
+    context.beginPath();
+    context.moveTo(49, 395);
+    context.lineTo(751, 395);
+    context.strokeStyle = "black";
+    context.lineWidth = 5;
+    context.stroke();
+
+    for (var i = 0, j = 8; i <= 700; i += 10) {
+        if (i % 50 === 0) {
+            if (!(i > 300 && i < 350)) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 2;
+                context.stroke();
+            }
+        } else {
+            if (i >= 300 && i <= 350) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            } else {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            }
+
+        }
+    }
 
 context.beginPath();
 context.moveTo(70,250);
@@ -345,7 +374,45 @@ function main3l() {
     context.font = "23px Arial";
     context.fillText("F", 710, 420);
 
-context.beginPath();
+    context.beginPath();
+    context.moveTo(49, 395);
+    context.lineTo(751, 395);
+    context.strokeStyle = "black";
+    context.lineWidth = 5;
+    context.stroke();
+
+    for (var i = 0, j = 8; i <= 700; i += 10) {
+        if (i % 50 === 0) {
+            if (!(i > 300 && i < 350)) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 2;
+                context.stroke();
+            }
+        } else {
+            if (i >= 300 && i <= 350) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            } else {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            }
+
+        }
+    }
+
+
+    context.beginPath();
 context.moveTo(70,250);
 context.lineTo(70,390);
 context.strokeStyle = "black";
@@ -814,6 +881,44 @@ function main3le() {
     context.fillText("F", 710, 420);
 
     context.beginPath();
+    context.moveTo(49, 395);
+    context.lineTo(751, 395);
+    context.strokeStyle = "black";
+    context.lineWidth = 5;
+    context.stroke();
+
+    for (var i = 0, j = 8; i <= 700; i += 10) {
+        if (i % 50 === 0) {
+            if (!(i > 300 && i < 350)) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 2;
+                context.stroke();
+            }
+        } else {
+            if (i >= 300 && i <= 350) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            } else {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            }
+
+        }
+    }
+
+
+    context.beginPath();
     context.moveTo(70,250);
     context.lineTo(70,390);
     context.strokeStyle = "black";
@@ -1278,7 +1383,45 @@ context.clearRect(0,0,canvas.width,canvas.height);
     context.font = "23px Arial";
     context.fillText("F", 710, 420);
 
-if(pointx<717) {
+    context.beginPath();
+    context.moveTo(49, 395);
+    context.lineTo(751, 395);
+    context.strokeStyle = "black";
+    context.lineWidth = 5;
+    context.stroke();
+
+    for (var i = 0, j = 8; i <= 700; i += 10) {
+        if (i % 50 === 0) {
+            if (!(i > 300 && i < 350)) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 2;
+                context.stroke();
+            }
+        } else {
+            if (i >= 300 && i <= 350) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            } else {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            }
+
+        }
+    }
+
+
+    if(pointx<717) {
     pointx = pointx + 6.4;
     count = count + 1;
 }
@@ -1737,6 +1880,44 @@ function main3re() {
 
     context.font = "23px Arial";
     context.fillText("F", 710, 420);
+
+    context.beginPath();
+    context.moveTo(49, 395);
+    context.lineTo(751, 395);
+    context.strokeStyle = "black";
+    context.lineWidth = 5;
+    context.stroke();
+
+    for (var i = 0, j = 8; i <= 700; i += 10) {
+        if (i % 50 === 0) {
+            if (!(i > 300 && i < 350)) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 2;
+                context.stroke();
+            }
+        } else {
+            if (i >= 300 && i <= 350) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            } else {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            }
+
+        }
+    }
+
 
     if(pointx<717) {
         pointx = pointx + 6.4;
@@ -2445,20 +2626,20 @@ function mouseevt(x,y) {
 function main3e() {
 
     context.clearRect(0,0,canvas.width,canvas.height);
-    //btnl.style.display='none';
+    btnl.style.display='none';
 
-    $('#btnl').css("display","none");
-    $('#btnr').css("display","none");
-    $('#btnle').css("display","");
-    $('#btnre').css("display","");
-    $('#btnx').css("display","");
-    $('#btne').css("display","none");
+    // $('#btnl').css("display","none");
+    // $('#btnr').css("display","none");
+    // $('#btnle').css("display","");
+    // $('#btnre').css("display","");
+    // $('#btnx').css("display","");
+    // $('#btne').css("display","none");
 
-    //btnr.style.display='none';
-    //btnle.style.display='';
-    //btnre.style.display='';
-    //btnx.style.display='';
-    //btne.style.display='none';
+    btnr.style.display='none';
+    btnle.style.display='';
+    btnre.style.display='';
+    btnx.style.display='';
+    btne.style.display='none';
 
     l2.style.display='';
     l1.style.display='none';
@@ -2480,6 +2661,44 @@ function main3e() {
 
     context.font = "23px Arial";
     context.fillText("F", 710, 420);
+
+    context.beginPath();
+    context.moveTo(49, 395);
+    context.lineTo(751, 395);
+    context.strokeStyle = "black";
+    context.lineWidth = 5;
+    context.stroke();
+
+    for (var i = 0, j = 8; i <= 700; i += 10) {
+        if (i % 50 === 0) {
+            if (!(i > 300 && i < 350)) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 2;
+                context.stroke();
+            }
+        } else {
+            if (i >= 300 && i <= 350) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            } else {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            }
+
+        }
+    }
+
 
     context.beginPath();
     context.moveTo(70,250);
@@ -2894,9 +3113,6 @@ function main3x() {
     l2.style.display='none';
     l1.style.display='';
 
-
-
-
      context.font = "23px Arial";
     // context.fillText("X", 620, 155);
     //
@@ -2914,6 +3130,44 @@ function main3x() {
 
     context.font = "23px Arial";
     context.fillText("F", 710, 420);
+
+    context.beginPath();
+    context.moveTo(49, 395);
+    context.lineTo(751, 395);
+    context.strokeStyle = "black";
+    context.lineWidth = 5;
+    context.stroke();
+
+    for (var i = 0, j = 8; i <= 700; i += 10) {
+        if (i % 50 === 0) {
+            if (!(i > 300 && i < 350)) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 2;
+                context.stroke();
+            }
+        } else {
+            if (i >= 300 && i <= 350) {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            } else {
+                context.beginPath();
+                context.moveTo(50 + i, 395);
+                context.lineTo(50 + i, 395 + j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
+            }
+
+        }
+    }
+
 
     context.beginPath();
     context.moveTo(70,250);

@@ -48,6 +48,8 @@
             $(function() {
                 $( "#dialog" ).dialog();
             });
+
+            document.getElementById('choose').disabled=false;
             //dialog.style.padding='100px';
         }
 
@@ -75,7 +77,7 @@
 <body onload="init();">
 <div id="saz" >
     <h1 style="text-align: center;background-color: grey;padding: 2px 0 15px 0;
-    margin-top:-10px;color: white">
+    margin-top:-20px;color: white">
         CAREY FOSTER'S BRIDGE SIMULATION</h1>
 
     <!--<input type="button" value="ENABLE POWER"-->
@@ -83,17 +85,14 @@
        <!--none;background-color: #ca2222;color: white;font-size: 14px;font-weight: bold;outline: none"-->
        <!--id="btn_main" onclick="main()">-->
     <div>
-        <table style="border: none;width: 620px;margin: 0 0 -10px 200px">
+        <table style="border: none;width: 790px;margin: 40px 0 -30px 60px;background-color: lightpink;border-radius: 20px">
             <tr>
                 <td style="border: none">
-                    <input type="button" value="ENABLE POWER"
-                           style="width: 130px;height: 50px;margin: 0px 0  0 -160px;border-radius: 20px;padding: 0 130px 0 15px;border:
-                           none;background-color: #ca2222;color: white;font-size: 14px;font-weight: bold;outline: none"
-                           id="btn_main" onclick="main()">
+
                 </td>
                 <td style="border: none"><h3>Choose Load Resistence X(In Ohms)</h3></td>
                 <td style="border: none">
-                    <select id="resist">
+                    <select id="resist" style="width: 70px;height: 30px;border: 1px solid red;border-radius: 7px">
                         <option>0.1</option>
                         <option>0.2</option>
                         <option>0.3</option>
@@ -102,8 +101,8 @@
                     </select>
                 </td>
                 <td style="border: none">
-                    <input type="button" onclick="choose_resist()" style="background-color: #ed5e36;
-                    padding: 8px 12px 8px 12px;border-radius: 10px;border: none;color: white;margin: 0 0 0 5px" value="Choose">
+                    <input type="button" id="choose"  onclick="choose_resist()" style="background-color: #ed5e36;
+                    padding: 8px 12px 8px 12px;border-radius: 10px;border: none;color: white;margin: 0 0 0 5px;cursor: pointer" value="Choose" >
 
                 </td>
                 <td style="border: none">
@@ -115,6 +114,10 @@
             </tr>
 
         </table>
+        <input type="button" value="ENABLE POWER"
+               style="width: 130px;height: 50px;margin: -210px 0 -10px 940px;border-radius: 20px;padding: 0 130px 0 15px;border:
+                           none;background-color: #ca2222;color: white;font-size: 14px;font-weight: bold;outline: none"
+               id="btn_main" onclick="main()">
 
 
     </div>
@@ -133,8 +136,8 @@
         </div>
     </div>
 
-<canvas id="mycanvas" style="border: 5px solid darkblue ;border-radius: 15px;
- margin: 30px 0 0 30px" width="800" height="440"></canvas>
+<canvas id="mycanvas" style="border: 4px solid teal ;border-radius: 15px;
+ margin: 30px 0 0 50px" width="800" height="440"></canvas>
 
     <div style="margin:-410px 30px 10px 900px;padding: 20px 0px 20px 12px;border: 4px solid red;border-radius: 10px">
 
@@ -210,18 +213,18 @@
 
 
 
-    <table style="width: 700px;border: none;margin: 60px 0 0 70px">
-        <tr  id="l1">
+    <table style="width: 800px;border: none;margin: 50px 0 20px 50px;padding: 0 150px 0 0;background-color: lightpink;border-radius: 20px">
+        <tr  id="l1" >
             <td style="border: none">
-                <h3>Length(l1,measured from left side when Load resistence X placed in left) </h3>
+                <h3 style="margin-left: -50px">Length(l1,measured from left side when Load resistence X placed in left) </h3>
             </td>
             <td style="border: none">
-                <h3 id="showl" style="border: 1px solid black;padding: 5px 30px 5px 30px;color: red"></h3>
+                <h3 id="showl" style="border: 1px solid black;margin-right: 30px;padding: 5px 30px 5px 30px;color: red"></h3>
             </td>
         </tr>
         <tr style="display: none" id="l2">
             <td style="border: none">
-                <h3>Length(l2,measured from left side when Load resistence X placed in right) </h3>
+                <h3 style="margin-left: -50px">Length(l2,measured from left side when Load resistence X placed in right) </h3>
             </td>
             <td style="border: none">
                 <h3 id="showr" style="border: 1px solid black;padding: 5px 30px 5px 30px;color: red"></h3>
@@ -489,7 +492,8 @@
 
     </table>
 
-    <button onclick="values()" style="margin:20px 0 0 620px">Select</button>
+    <button onclick="values()" style="background-color: #6a1b9a;color: white;margin:20px 0 0 620px;
+            border: none;padding: 7px 20px 7px 20px;cursor: pointer" >Select</button>
 
     <h3 style="margin: 10px 0 0 470px">Selected Length is <span id="length" style="color: red"></span>
         and selected Radius is <span id="radius" style="color: red"></span></h3>
@@ -499,7 +503,8 @@
 <div>
     <h3 style="text-align: center;text-decoration: underline">Here we calculate the value of specific resistance of the material of unknown wire-</h3>
     <h3 style="text-align: center">Enter :- &nbsp;(<input type="text" placeholder="Enter value of Y here " id="userY">*π*r<sup>2</sup>)/l</h3>
-    <button onclick="specific()" style="margin: 0 0 0 614px">Calculate</button>
+    <button onclick="specific()" style="background-color: #6a1b9a;color: white;margin: 0 0 0 614px;
+            border: none;padding: 7px 20px 7px 20px;cursor: pointer" >Calculate</button>
     <h3 style="text-align: center">The value of specific resistance is =&nbsp;<span id="specres" style="color: red" ></span></h3>
 
 </div>
@@ -507,9 +512,11 @@
 <script>
 
     function choose_resist(){
+        //alert("Please power on first!");
         var r1 = document.getElementById("resist");
         var str1 = r1.options[r1.selectedIndex].text;
         document.getElementById('rest').innerHTML=str1 + '  ohm';
+
 
     }
 

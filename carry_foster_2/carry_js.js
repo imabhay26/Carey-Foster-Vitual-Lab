@@ -7,6 +7,10 @@ function main() {
     btn_main.style.fontSize='bold';
     document.getElementById('btn_main').value="POWER IS ON";
     document.getElementById('btn1').disabled=false;
+
+
+
+
     //document.getElementById('btn7').disabled=false;
     //document.getElementById('btn8').disabled=false;
     //document.getElementById('btn9').disabled=false;

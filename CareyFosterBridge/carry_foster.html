@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+    <title>Carry_Foster_Simulation</title>
+    <style>
+
+        body{
+            font-family: Calibri;
+        }
+        table,th,td{
+            border: 3px solid gray;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        table{
+            width: 100%;
+        }
+        button{
+            border-radius: 5px;
+            padding: 5px;
+            border: 2px solid black;
+            font-weight: bold;
+        }
+        #saz{
+            border-top: 30px solid grey;
+            border-bottom: 30px solid grey;
+            border-left: 30px solid #979797;
+            border-right: 30px solid #979797;
+            margin:10px 60px 0 60px;
+            height: 740px;
+        }
+        #btn_main{
+            cursor: pointer;
+        }
+        .design{
+            cursor: pointer;
+            margin: 5px;
+        }
+
+    </style>
+    <script>
+//        function main() {
+//            $(function() {
+//                $( "#dialog" ).dialog();
+//
+//            });
+//
+//            //document.getElementById('choose').disabled=false;
+//
+//            //dialog.style.padding='100px';
+//        }
+
+        function funn() {
+            alert('Wrong Answer! Choose again...');
+        }
+
+        function fun2() {
+            alert('Right answer! Now select the value of Load Resistance X');
+            setColor.style.backgroundColor='#4CAF50';
+            setColor.style.color='white';
+            setColor.style.fontSize='bold';
+            document.getElementById('setColor').value="POWER IS ON";
+        }
+
+        function fun3() {
+            alert('Wrong Answer! Choose again...');
+        }
+        function fun4() {
+            alert('Wrong Answer! Choose again...');
+        }
+
+    </script>
+</head>
+<body onload="init();">
+<div id="saz" >
+    <h1 style="text-align: center;background-color: grey;font-weight: bolder;padding: 2px 0 15px 0;
+    margin-top:-20px;color: white">
+        CAREY FOSTER'S BRIDGE SIMULATION</h1>
+
+    <!--<input type="button" value="ENABLE POWER"-->
+       <!--style="width: 130px;height: 50px;margin: 0px 0  0 70px;border-radius: 20px;padding: 0 130px 0 15px;border:-->
+       <!--none;background-color: #ca2222;color: white;font-size: 14px;font-weight: bold;outline: none"-->
+       <!--id="btn_main" onclick="main()">-->
+    <div>
+        <table style="border: none;width: 790px;margin: 20px 0 -30px 60px;background-color: lightpink;border-radius: 20px">
+            <tr>
+                <td style="border: none"><h4>Choose Load Resistence X(In Ohms)</h4></td>
+                <td style="border: none">
+                    <select id="resist" style="width: 70px;height: 30px;outline: none;border: 1px solid red;border-radius: 7px">
+                        <option>0.1</option>
+                        <option>0.2</option>
+                        <option>0.3</option>
+                        <option>0.4</option>
+                        <option>0.5</option>
+                    </select>
+                </td>
+                <td style="border: none">
+                    <button type="button" id="choose" class="btn btn-primary disabled"  onclick="choose_resist()"
+                        disabled    style="outline:none" >Choose</button>
+
+                </td>
+                <td style="border: none">
+                    <h3>&nbsp;</span></h3>
+                </td>
+                <td style="border: none">
+                    <h4>Selected value is &nbsp;<span id="rest" style="color: red"></span></h4>
+                </td>
+            </tr>
+
+        </table>
+
+        <input type="button" value="ENABLE POWER"
+               style="width: 130px;height: 50px;margin: -210px 0 -10px 940px;border-radius: 20px;padding: 0 130px 0 35px;border:
+                           none;background-color: #ca2222;color: white;font-size: 14px;font-weight: bold;outline: none"
+               id="btn_main" onclick="main()">
+
+
+    </div>
+
+<div>
+    <div>
+
+        <div id="dialog" title="Choose correct one- " style="display: none;width: 300px">
+            <p >Among the following which Circuit is correct ?</p>
+            <img src="img/cir.png" width="500" height="300"  >
+            <p>Options:</p>
+            <input style="margin-left:15px;background-color: lightblue;font-weight:bold;height:22px;font-size:10px;border: none" type="button" value="Image1" id="ans1" onclick="funn()">
+            <input style="background-color: lightblue;font-weight:bold;font-size:10px;height:22px;border: none" type="button" value="Image2" id="ans2" onclick="fun2()">
+            <input style="background-color: lightblue;font-weight:bold;font-size:10px;height:22px;border: none" type="button" value="Image3" id="ans3" onclick="fun3()">
+            <input  style="background-color: lightblue;font-weight:bold;font-size:10px;height:22px;border: none"  type="button" value="Image4" id="ans4" onclick="fun4()">
+        </div>
+    </div>
+
+<canvas id="mycanvas" style="border: 4px solid teal ;border-radius: 15px;
+ margin: 30px 0 0 50px" width="800" height="440"></canvas>
+
+    <div style="margin:-450px 30px 10px 900px;padding: 40px 0 40px 12px;border: 4px solid teal;border-radius: 10px">
+
+        <!--<input type="button" class="design " id="btn1" onclick="main1()" style="background-color: #ed5e36;-->
+        <!--padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px;cursor: not-allowed;" value=" Resist_1" disabled  >-->
+
+        <!--<input type="button" class="design" id="btn7" onclick="main7()" style="background-color: #ed5e36;-->
+        <!--padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Resist_2" >-->
+
+        <!--<input type="button" class="design" id="btn8" onclick="main8()" style="background-color: #ed5e36;-->
+        <!--padding: 8px 12px 8px 12px;color: white;margin: 5px 0 0 5px" value=" Resist_3" >-->
+
+        <!--<input type="button" class="design" id="btn9" onclick="main9()" style="background-color: #ed5e36;-->
+        <!--padding: 8px 12px 8px 12px;color: white;margin: 1px 0 0 5px" value=" Resist_4" >-->
+
+        <!--<input type="button" class="design" id="btn10" onclick="main10()" style="background-color: #ed5e36;-->
+        <!--padding: 8px 44px 8px 43px;color: white;margin: 5px 0 0 5px" value=" Galvanometer" ><br>-->
+
+        <!--<input type="button" class="design" id="btn2" onclick="main2()" style="background-color: #ed5e36;-->
+        <!--padding: 8px 12px 8px 12px;color: white;margin: 5px 0 0 5px" value=" Battery" >-->
+
+        <!--<input type="button" class="design" id="btn3" onclick="main3()" style="background-color: #ed5e36;-->
+        <!--padding: 8px 12px 8px 12px;color: white;margin: 0 0 0 5px" value=" Select Key" >-->
+
+        <!--<input type="button" class="design" id="btn5" onclick="main5()" style="background-color: #ed5e36;-->
+        <!--padding: 12px 17px 8px 18px;color: white;margin: 5px 0 0 5px" value=" Connect Key & Battery" >-->
+
+        <!--<input type="button" class="design" id="btn11" onclick="main11()" style="background-color: #ed5e36;-->
+        <!--padding: 8px 55px 8px 55px;color: white;margin: 5px 0 0 5px" value=" Close Key" >-->
+
+
+
+        <button type="button" id="btn1" onclick="main1()" class="btn btn-danger disabled" disabled>Resistance_1</button>
+        <button type="button" id="btn7" onclick="main7()" class="btn btn-danger disabled" disabled  >Resistance_2</button><br>
+        <button style="margin: 20px 0 20px 0" type="button" id="btn8" onclick="main8()" class="btn btn-danger disabled" disabled  >Resistance_3</button>
+        <button style="margin: 20px 0 20px 0" type="button" id="btn9" onclick="main9()" class="btn btn-danger disabled" disabled  >Resistance_4</button>
+        <button style="width: 100px" type="button" id="btn10" onclick="main10()" class="btn btn-primary disabled" disabled  >Galvanometer</button>
+        <button style="width: 100px" type="button" id="btn2" onclick="main2()" class="btn btn-primary disabled" disabled  >Battery</button>
+        <button style="width: 100px;margin: 20px 0 20px 0" type="button" id="btn3" onclick="main3()" class="btn btn-success disabled" disabled  >Select Key</button>
+        <button style="width: 100px;margin: 20px 0 20px 0" type="button" id="btn11" onclick="main11()" class="btn btn-success disabled" disabled  >Close Key</button>
+        <button style="width: 203px;margin: 0 0 20px 0" type="button" id="btn5" onclick="main5()" class="btn btn-danger disabled" disabled  >Connect Key & Battery</button>
+
+        <button style="width: 100px;margin: 0 0 20px 0" type="button" class="btn btn-primary disabled" disabled id="btnl" onclick="main3l()"  >Shift Left</button>
+
+        <button style="width: 100px;margin: 0 0 20px 0" type="button" class="btn btn-primary disabled" disabled id="btnr" onclick="main3r()"  >Shift Right</button>
+
+        <button  style="width: 100px;margin: 0 0 20px 0;display: none" type="button" class="btn btn-info" id="btnle" onclick="main3le()"> Shift Left </button>
+
+        <button  style="width: 100px;margin: 0 0 20px 0;display: none" type="button" class="btn btn-info" id="btnre" onclick="main3re()"  >Shift Right</button>
+
+        <button style="width: 203px;margin: 0 0 0 0" type="button" class="btn btn-success disabled" disabled id="btne" onclick="main3e()"  > Exchange X with Y </button>
+
+        <button style="width: 203px;margin: 0 0 0 0;display: none" type="button" class="btn btn-primary" id="btnx" onclick="main3x()">Exchange Y with X</button>
+
+
+    </div>
+    <img src="img/resistance2.png" style="display: none" id="img1">
+    <img src="img/battery2.jpg" style="display: none" id="img2">
+    <img src="img/key_off.png" style="display: none" id="img3">
+    <img src="img/keyon.png" style="display: none" id="img11">
+    <img src="img/gal.png" style="display: none" id="img5">
+    <img src="img/galr.png" style="display: none" id="img6">
+
+
+
+    <table style="width: 800px;border: none;margin: 20px 0 60px 50px;padding: 0 150px 0 0;background-color: lightpink;border-radius: 20px">
+        <tr  id="l1" >
+            <td style="border: none">
+                <h4 style="margin-left: -60px">Length(l1,measured from left side when Load resistence X placed in left) </h4>
+            </td>
+            <td style="border: none">
+                <h4 id="showl" style="border: 1px solid black;margin-right: 30px;padding: 5px 20px 5px 20px;color: red"></h4>
+            </td>
+        </tr>
+        <tr style="display: none" id="l2">
+            <td style="border: none">
+                <h4 style="margin-left: -60px">Length(l2,measured from left side when Load resistence X placed in right) </h4>
+            </td>
+            <td style="border: none">
+                <h4 id="showr" style="border: 1px solid black;margin-right: 30px;padding: 5px 20px 5px 20px;color: red"></h4>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+</div>
+<br>
+<div>
+    <h3 style="background-color: #6a1b9a;color: white;padding: 7px;font-family:
+ Arial, Helvetica, sans-serif;text-align: center">
+        Table 1: To determine the resistance per unit length of the bridge wire (ρ):</h3>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">S.No.</th>
+                <th rowspan="2">Resistance
+                    connected in decimal<br>
+                    resistance box X (in ohm)
+                </th>
+                <th colspan="2" style="padding: 5px">Zero deflection Position when resistance box is connected
+                </th>
+                <th rowspan="2" style="padding: 5px">(l<sub>2</sub>-l<sub>1</sub>)<br>
+                    ( in cms)
+                </th>
+                <th rowspan="2" style="padding: 5px">ρ = X/ (l<sub>2</sub>-l<sub>1</sub>)<br>
+                    (in ohms)
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    In left gap l<sub>1</sub>
+                    (in cms)
+                </th>
+                <th>In right gap l<sub>2</sub>
+                    (in cms)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>01</th>
+            <td>
+                <input type="number" id="xohm1">
+            </td>
+            <td>
+                <input type="number" id="xleft1">
+            </td>
+            <td>
+                <input type="number" id="xright1">
+            </td>
+            <td id="xll1"></td>
+            <td id="row1"></td>
+        </tr>
+        <tr>
+            <th>02</th>
+            <td>
+                <input type="number" id="xohm2">
+            </td>
+            <td>
+                <input type="number" id="xleft2">
+            </td>
+            <td>
+                <input type="number" id="xright2">
+            </td>
+            <td id="xll2"></td>
+            <td id="row2"></td>
+        </tr>
+        <tr>
+            <th>03</th>
+            <td>
+                <input type="number" id="xohm3">
+            </td>
+            <td>
+                <input type="number" id="xleft3">
+            </td>
+            <td>
+                <input type="number" id="xright3">
+            </td>
+            <td id="xll3"></td>
+            <td id="row3"></td>
+        </tr>
+        <tr>
+            <th>04</th>
+            <td>
+                <input type="number" id="xohm4">
+            </td>
+            <td>
+                <input type="number" id="xleft4">
+            </td>
+            <td>
+                <input type="number" id="xright4">
+            </td>
+            <td id="xll4"></td>
+            <td id="row4"></td>
+        </tr>
+        <tr>
+            <th>05</th>
+            <td>
+                <input type="number" id="xohm5">
+            </td>
+            <td>
+                <input type="number" id="xleft5">
+            </td>
+            <td>
+                <input type="number" id="xright5">
+            </td>
+            <td id="xll5"></td>
+            <td id="row5"></td>
+        </tr>
+        <tr>
+            <td colspan="5"><button style="background-color: #6a1b9a;color: white;margin: 0 0 0 150px;
+            border: none;padding: 7px 20px 7px 20px;cursor: pointer" onclick="calculate_table1()">Calculate</button></td>
+
+            <td><span style="font-weight: bold">Mean ρ = </span><span id="x_display"></span><span style="font-weight: bold">Ohms</span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<h3 style="background-color: #6a1b9a;color: white;padding: 7px;font-family:
+ Arial, Helvetica, sans-serif;text-align: center">Table 2: For the resistance of the given wire (Y):</h3>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th rowspan="2">S.No.</th>
+            <th rowspan="2">Resistance
+                connected in decimal<br>
+                resistance box X (in ohm)
+
+            </th>
+            <th colspan="2" style="padding: 5px">Zero deflection Position when resistance box is connected
+            </th>
+            <th rowspan="2" style="padding: 5px">(l<sub>2</sub>-l<sub>1</sub>)<br>
+                ( in cms)
+            </th>
+            <th rowspan="2" style="padding: 5px">Y = X- ρ (l<sub>2</sub>-l<sub>1</sub>)
+                <br>
+                (in ohms)
+            </th>
+        </tr>
+        <tr>
+            <th>
+                In left gap l<sub>1</sub>
+                (in cms)
+            </th>
+            <th>In right gap l<sub>2</sub>
+                (in cms)
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>01</th>
+            <td>
+                <input type="number" id="yohm1">
+            </td>
+            <td>
+                <input type="number" id="yleft1">
+            </td>
+            <td>
+                <input type="number" id="yright1">
+            </td>
+            <td id="yll1"></td>
+            <td id="wayi1"></td>
+        </tr>
+        <tr>
+            <th>02</th>
+            <td>
+                <input type="number" id="yohm2">
+            </td>
+            <td>
+                <input type="number" id="yleft2">
+            </td>
+            <td>
+                <input type="number" id="yright2">
+            </td>
+            <td id="yll2"></td>
+            <td id="wayi2"></td>
+        </tr>
+        <tr>
+            <th>03</th>
+            <td>
+                <input type="number" id="yohm3">
+            </td>
+            <td>
+                <input type="number" id="yleft3">
+            </td>
+            <td>
+                <input type="number" id="yright3">
+            </td>
+            <td id="yll3"></td>
+            <td id="wayi3"></td>
+        </tr>
+        <tr>
+            <th>04</th>
+            <td>
+                <input type="number" id="yohm4">
+            </td>
+            <td>
+                <input type="number" id="yleft4">
+            </td>
+            <td>
+                <input type="number" id="yright4">
+            </td>
+            <td id="yll4"></td>
+            <td id="wayi4"></td>
+        </tr>
+        <tr>
+            <th>05</th>
+            <td>
+                <input type="number" id="yohm5">
+            </td>
+            <td>
+                <input type="number" id="yleft5">
+            </td>
+            <td>
+                <input type="number" id="yright5">
+            </td>
+            <td id="yll5"></td>
+            <td id="wayi5"></td>
+        </tr>
+        <tr>
+            <td colspan="5"><button style="background-color: #6a1b9a;color: white;margin: 0 0 0 150px;
+            border: none;padding: 7px 20px 7px 20px;cursor: pointer" onclick="calculate_table2()">Calculate</button></td>
+
+            <td><span style="font-weight: bold">Mean Y =</span> <span id="y_display"></span><span style="font-weight: bold">Ohms</span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <table style="width: 500px;text-align: center;margin:20px 0 0 400px">
+        <tr >
+            <td style="border: none">
+                <h4>The given Length(l) of the wire is</h4>
+            </td>
+            <td style="border: none">
+                <select id="ddlViewBy1">
+                    <option value="1">10</option>
+                    <option value="2">20</option>
+                    <option value="3">30</option>
+                </select>
+            </td>
+        </tr>
+            <tr>
+                <td style="border: none">
+                    <h4>The given Radius(r) of the wire is</h4>
+                </td>
+                <td style="border: none">
+                    <select id="ddlViewBy2">
+                        <option value="1">100</option>
+                        <option value="2">200</option>
+                        <option value="3">300</option>
+                    </select>
+                </td>
+            </tr>
+
+    </table>
+
+    <button onclick="values()" style="background-color: #6a1b9a;color: white;margin:20px 0 0 620px;
+            border: none;padding: 7px 20px 7px 20px;cursor: pointer" >Select</button>
+
+    <h4 style="margin: 10px 0 0 470px">Selected Length is <span id="length" style="color: red"></span>
+        and selected Radius is <span id="radius" style="color: red"></span></h4>
+
+</div>
+<hr>
+<div>
+    <h4 style="text-align: center;text-decoration: underline">Here we calculate the value of specific resistance of the material of unknown wire-</h4>
+    <h4 style="text-align: center">Enter :- &nbsp;(<input type="text" placeholder="Enter value of Y here " id="userY">*π*r<sup>2</sup>)/l</h4>
+    <button onclick="specific()" style="background-color: #6a1b9a;color: white;margin: 0 0 0 614px;
+            border: none;padding: 7px 20px 7px 20px;cursor: pointer" >Calculate</button>
+    <h3 style="text-align: center">The value of specific resistance is =&nbsp;<span id="specres" style="color: red" ></span></h3>
+
+</div>
+
+<script>
+
+    function choose_resist(){
+        //alert("Please power on first!");
+        var r1 = document.getElementById("resist");
+        var str1 = r1.options[r1.selectedIndex].text;
+        document.getElementById('rest').innerHTML=str1 + '  ohm';
+        document.getElementById('btn1').disabled=false;
+        document.getElementById('btn1').style.cursor="pointer";
+        document.getElementById('btn1').classList.remove("disabled");
+
+
+
+    }
+
+    function values() {
+
+        var e1 = document.getElementById("ddlViewBy1");
+        var strUser1 = e1.options[e1.selectedIndex].text;
+        document.getElementById('length').innerHTML=strUser1;
+
+        var e2 = document.getElementById("ddlViewBy2");
+        var strUser2 = e2.options[e2.selectedIndex].text;
+        document.getElementById('radius').innerHTML=strUser2;
+
+    }
+
+    function specific() {
+        var e1 = document.getElementById("ddlViewBy1");
+        var strUser1 = e1.options[e1.selectedIndex].text;
+        var e2 = document.getElementById("ddlViewBy2");
+        var strUser2 = e2.options[e2.selectedIndex].text;
+
+        var val=document.getElementById('userY').value;
+        var yvalue=(val*(22/7)*strUser2*strUser2)/strUser1;
+
+        document.getElementById('specres').innerHTML=Number(yvalue).toFixed(2);
+    }
+</script>
+
+<script>
+
+    function calculate_table1() {
+
+        var x_res1 = document.getElementById('xohm1').value;
+        var x_res2 = document.getElementById('xohm2').value;
+        var x_res3 = document.getElementById('xohm3').value;
+        var x_res4 = document.getElementById('xohm4').value;
+        var x_res5 = document.getElementById('xohm5').value;
+
+        var xl_len1 = document.getElementById('xleft1').value;
+        var xl_len2 = document.getElementById('xleft2').value;
+        var xl_len3 = document.getElementById('xleft3').value;
+        var xl_len4 = document.getElementById('xleft4').value;
+        var xl_len5 = document.getElementById('xleft5').value;
+
+        var xr_len1 = document.getElementById('xright1').value;
+        var xr_len2 = document.getElementById('xright2').value;
+        var xr_len3 = document.getElementById('xright3').value;
+        var xr_len4 = document.getElementById('xright4').value;
+        var xr_len5 = document.getElementById('xright5').value;
+
+        var x_dif1 = xr_len1 - xl_len1;
+        var x_dif2 = xr_len2 - xl_len2;
+        var x_dif3 = xr_len3 - xl_len3;
+        var x_dif4 = xr_len4 - xl_len4;
+        var x_dif5 = xr_len5 - xl_len5;
+
+        document.getElementById('xll1').innerHTML = x_dif1;
+        document.getElementById('xll2').innerHTML = x_dif2;
+        document.getElementById('xll3').innerHTML = x_dif3;
+        document.getElementById('xll4').innerHTML = x_dif4;
+        document.getElementById('xll5').innerHTML = x_dif5;
+
+        document.getElementById('row1').innerHTML = x_res1 / x_dif1;
+        document.getElementById('row2').innerHTML = x_res2 / x_dif2;
+        document.getElementById('row3').innerHTML = x_res3 / x_dif3;
+        document.getElementById('row4').innerHTML = x_res4 / x_dif4;
+        document.getElementById('row5').innerHTML = x_res5 / x_dif5;
+
+        var row_final = ((x_res1 / x_dif1) + (x_res2 / x_dif2) + (x_res3 / x_dif3) + (x_res4 / x_dif4)
+            + (x_res5 / x_dif5)) / 5;
+
+        document.getElementById('x_display').innerHTML=row_final;
+        return row_final;
+    }
+
+
+    function calculate_table2() {
+
+        var row_final1=calculate_table1();
+
+        var y_res1 = document.getElementById('yohm1').value;
+        var y_res2 = document.getElementById('yohm2').value;
+        var y_res3 = document.getElementById('yohm3').value;
+        var y_res4 = document.getElementById('yohm4').value;
+        var y_res5 = document.getElementById('yohm5').value;
+
+        var yl_len1 = document.getElementById('yleft1').value;
+        var yl_len2 = document.getElementById('yleft2').value;
+        var yl_len3 = document.getElementById('yleft3').value;
+        var yl_len4 = document.getElementById('yleft4').value;
+        var yl_len5 = document.getElementById('yleft5').value;
+
+        var yr_len1 = document.getElementById('yright1').value;
+        var yr_len2 = document.getElementById('yright2').value;
+        var yr_len3 = document.getElementById('yright3').value;
+        var yr_len4 = document.getElementById('yright4').value;
+        var yr_len5 = document.getElementById('yright5').value;
+
+        var y_dif1 = yr_len1 - yl_len1;
+        var y_dif2 = yr_len2 - yl_len2;
+        var y_dif3 = yr_len3 - yl_len3;
+        var y_dif4 = yr_len4 - yl_len4;
+        var y_dif5 = yr_len5 - yl_len5;
+
+        document.getElementById('yll1').innerHTML = y_dif1;
+        document.getElementById('yll2').innerHTML = y_dif2;
+        document.getElementById('yll3').innerHTML = y_dif3;
+        document.getElementById('yll4').innerHTML = y_dif4;
+        document.getElementById('yll5').innerHTML = y_dif5;
+
+        var y1 = y_res1 - (row_final1 * y_dif1);
+        var y2 = y_res2 - (row_final1 * y_dif2);
+        var y3 = y_res3 - (row_final1 * y_dif3);
+        var y4 = y_res4 - (row_final1 * y_dif4);
+        var y5 = y_res5 - (row_final1 * y_dif5);
+
+        document.getElementById('wayi1').innerHTML = y1;
+        document.getElementById('wayi2').innerHTML = y2;
+        document.getElementById('wayi3').innerHTML = y3;
+        document.getElementById('wayi4').innerHTML = y4;
+        document.getElementById('wayi5').innerHTML = y5;
+
+        document.getElementById('y_display').innerHTML=y1 + y2 + y3 + y4 + y5;
+    }
+
+
+
+</script>
+
+
+
+
+
+
+
+<script src="carry_js.js"></script>
+<script src="mouseevent.ob.js"></script>
+</body>
+</html>
